@@ -1,5 +1,9 @@
 # ChatGPT Viewer
 
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://chatgptviewer.streamlit.app/)
+
+[Live demo](https://chatgptviewer.streamlit.app/)
+
 A lightweight Streamlit app to browse and export your past ChatGPT conversations from the official data export JSON.
 
 ## Overview
@@ -48,12 +52,44 @@ streamlit run app.py
 
 Your browser will open automatically (or visit the URL shown in the terminal, typically http://localhost:8501).
 
+## Deploy to Streamlit Community Cloud
+
+You can deploy this app in minutes:
+
+1. Push this repo to GitHub (public or private).
+2. Go to https://streamlit.io/ and connect your GitHub account.
+3. Create a new app and select this repository and the `main` branch.
+4. App file path: `app.py`.
+5. Ensure `requirements.txt` is present (this repo includes `streamlit`).
+
+Optional:
+- Pin a Python version using `runtime.txt` (e.g., `python-3.11`).
+- Customize theme via `.streamlit/config.toml`.
+
+Notes on Cloud:
+- Large uploads may be limited; if the JSON is very large, consider pre-filtering locally.
+- App restarts when idle; your uploaded file isn’t persisted between sessions.
+
 ## Usage
 
 1. Click “Choose your exported ChatGPT file (JSON)” and select the `conversations.json` file from your ChatGPT data export.
 2. Pick a conversation in the “Select a conversation” dropdown.
 3. (Optional) Type a keyword in “Search by keyword (optional)” to highlight matches.
 4. Click “Export conversation to Markdown” to download the `.md` file for the current conversation.
+
+## Screenshots
+
+Add a screenshot to showcase the UI:
+
+```
+chatgpt_viewer/
+└─ docs/
+  └─ screenshot.png
+```
+
+Then reference it here:
+
+![ChatGPT Viewer screenshot](docs/screenshot.png)
 
 ## Expected JSON format
 
@@ -97,12 +133,20 @@ Important details:
 - Highlighting doesn’t appear
   - Only exact (case-insensitive) matches are highlighted within message text.
 
+Cloud-specific tips:
+- If the app can’t start on Streamlit Cloud, verify `requirements.txt` is committed and `app.py` is the entry point.
+- For very large JSON files, try reducing the file size or splitting exports.
+
 ## Project structure
 
 ```
 chatgpt_viewer/
 ├─ app.py        # Streamlit app
-└─ README.md     # This file
+├─ requirements.txt  # Python dependencies (for Streamlit Cloud and local installs)
+├─ runtime.txt   # Pin Python version for Streamlit Cloud (e.g., python-3.11)
+└─ .streamlit/
+  └─ config.toml    # Theme configuration
+README.md        # This file
 ```
 
 ## Development notes

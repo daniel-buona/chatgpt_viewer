@@ -4,6 +4,12 @@ import uuid
 import re
 import io
 
+st.set_page_config(
+    page_title="ChatGPT Viewer",
+    page_icon="💬",
+    layout="wide",
+)
+
 def generate_conversation_markdown(conversation, query=""):
     mapping = conversation.get("mapping", {})
     markdown = f"# {conversation.get('title', 'Untitled')}\n\n"
