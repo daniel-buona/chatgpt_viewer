@@ -6,8 +6,7 @@ import io
 
 st.set_page_config(
     page_title="ChatGPT Viewer",
-    page_icon="💬",
-    layout="wide",
+    page_icon="💬"
 )
 
 def generate_conversation_markdown(conversation, query=""):
